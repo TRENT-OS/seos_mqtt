@@ -17,7 +17,7 @@ void TimerCountdownMS(Timer*, unsigned int);
 void TimerCountdown(Timer*, unsigned int);
 int TimerLeftMS(Timer*);
 
-#ifdef UART_SOCKET
+#if defined(UART_SOCKET)
 
 #include "uart_hdlc.h"
 #include "uart_io_guest.h"
@@ -35,7 +35,7 @@ typedef struct Network
 }
 Network;
 
-#else
+#elif defined(LWIP)
 
 typedef struct Network
 {
@@ -44,6 +44,10 @@ typedef struct Network
     int (*mqttwrite) (struct Network*, unsigned char*, int, int);
 }
 Network;
+
+#else
+
+#error "undefined lower interface"
 
 #endif
 
