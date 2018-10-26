@@ -18,7 +18,23 @@ void TimerCountdown(Timer*, unsigned int);
 int TimerLeftMS(Timer*);
 
 #ifdef UART_SOCKET
-#   include "MQTTseL4_uart.h"
+
+#include "uart_hdlc.h"
+#include "uart_io_guest.h"
+#include "uart_stream.h"
+#include "uart_fifo.h"
+
+typedef struct Network
+{
+    UartIoGuest uart;
+    UartHdlc    uartHdlc;
+    UartFifo    uartFifo;
+    UartStream  uartStream;
+    int (*mqttread) (struct Network*, unsigned char*, int, int);
+    int (*mqttwrite) (struct Network*, unsigned char*, int, int);
+}
+Network;
+
 #else
 
 typedef struct Network
@@ -26,13 +42,13 @@ typedef struct Network
     int my_socket;
     int (*mqttread) (struct Network*, unsigned char*, int, int);
     int (*mqttwrite) (struct Network*, unsigned char*, int, int);
-} Network;
+}
+Network;
+
+#endif
 
 void NetworkInit(Network*);
 int NetworkConnect(Network*, char*, int);
 void NetworkDisconnect(Network*);
 
 #endif
-
-#endif
-

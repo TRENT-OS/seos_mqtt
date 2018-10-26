@@ -1,5 +1,3 @@
-#if defined(LWIP)
-
 #include "MQTTseL4.h"
 #include "lwip/sockets.h"
 #include "lwip/netdb.h"
@@ -44,8 +42,8 @@ static int seL4_write(Network* n, unsigned char* buffer, int len, int timeout_ms
 {
     struct timeval tv;
 
-    tv.tv_sec = 0;  /* 30 Secs Timeout */
-    tv.tv_usec = timeout_ms * 1000;// Not init'ing this can cause strange errors
+    tv.tv_sec = 0;
+    tv.tv_usec = timeout_ms * 1000;
 
     setsockopt(n->my_socket,
                 SOL_SOCKET,
@@ -122,5 +120,3 @@ void NetworkDisconnect(Network* n)
 {
     close(n->my_socket);
 }
-
-#endif

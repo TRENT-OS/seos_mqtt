@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
-#include "MQTTseL4_uart.h"
+#include "MQTTseL4.h"
 
 ///TODO this should be somewhere else or the check in uart_stream.c should be removed 'cause the size is dynamic
 #define CAPACITY (4096*16)
