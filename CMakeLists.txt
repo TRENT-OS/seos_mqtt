@@ -29,8 +29,9 @@ target_compile_definitions(${PROJECT_NAME}
   PRIVATE
     MQTT_SERVER
     MQTT_CLIENT
-    MQTTCLIENT_PLATFORM_HEADER=MQTTseL4.h
     MQTTCLIENT_QOS2=1
+  PUBLIC
+    MQTTCLIENT_PLATFORM_HEADER=MQTTseL4.h
 )
 
 target_include_directories(${PROJECT_NAME}
