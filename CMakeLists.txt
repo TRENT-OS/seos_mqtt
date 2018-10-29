@@ -43,21 +43,6 @@ target_include_directories(${PROJECT_NAME}
     src
 )
 
-if (LibLwip)
-
-    target_compile_definitions(${PROJECT_NAME} PRIVATE LWIP=1)
-    target_sources(${PROJECT_NAME} PRIVATE src/MQTTseL4_lwip.c)
-    target_link_libraries(${PROJECT_NAME} lwip)
-
-elseif (UartSocket)
-
-    target_compile_definitions(${PROJECT_NAME} PRIVATE UART_SOCKET=1)
-    target_sources(${PROJECT_NAME} PRIVATE src/MQTTseL4_uart.c)
-    target_link_libraries(${PROJECT_NAME} sel4platsupport uart_socket)
-
-
-else()
-
-    message(FATAL_ERROR "define lower interface: LibLwip, UartSocket")
-
-endif()
+target_link_libraries(${PROJECT_NAME}
+    sel4platsupport
+)

@@ -1,15 +1,18 @@
-#if !defined(__MQTT_SEL4_)
-#define __MQTT_SEL4_
+/*
+ *  MQTT wrapper
+ *
+ *  Copyright (C) 2018, Hensoldt Cyber GmbH
+ */
+
+#pragma once
 
 #include <stdint.h>
 
-typedef struct Timer
-{
+typedef struct {
     void*           impl;
     uint64_t        startNS;
     unsigned        timeSpanMS;
-}
-Timer;
+} Timer;
 
 void TimerInit(Timer*);
 char TimerIsExpired(Timer*);
@@ -17,42 +20,9 @@ void TimerCountdownMS(Timer*, unsigned int);
 void TimerCountdown(Timer*, unsigned int);
 int TimerLeftMS(Timer*);
 
-#if defined(UART_SOCKET)
 
-#include "uart_hdlc.h"
-#include "uart_io_guest.h"
-#include "uart_stream.h"
-#include "uart_fifo.h"
-
-typedef struct Network
-{
-    UartIoGuest uart;
-    UartHdlc    uartHdlc;
-    UartFifo    uartFifo;
-    UartStream  uartStream;
-    int (*mqttread) (struct Network*, unsigned char*, int, int);
-    int (*mqttwrite) (struct Network*, unsigned char*, int, int);
-}
-Network;
-
-#elif defined(LWIP)
-
-typedef struct Network
-{
-    int my_socket;
-    int (*mqttread) (struct Network*, unsigned char*, int, int);
-    int (*mqttwrite) (struct Network*, unsigned char*, int, int);
-}
-Network;
-
-#else
-
-#error "undefined lower interface"
-
-#endif
-
-void NetworkInit(Network*);
-int NetworkConnect(Network*, char*, int);
-void NetworkDisconnect(Network*);
-
-#endif
+typedef struct _Network {
+    void *ctx;
+    int (*mqttread) (struct _Network*, unsigned char*, int, int);
+    int (*mqttwrite) (struct _Network*, unsigned char*, int, int);
+} Network;
