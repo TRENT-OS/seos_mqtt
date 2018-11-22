@@ -19,7 +19,7 @@ static uint64_t NowNS(Timer const* timer)
 
 static unsigned ElapsedMS(Timer* timer)
 {
-    uint64_t timeElapsedMS = (NowNS(timer) - timer->startNS) / 1000;
+    uint64_t timeElapsedMS = (NowNS(timer) - timer->startNS) / 1000000;
 
     return (timeElapsedMS < UINT_MAX) ?
         (unsigned) timeElapsedMS : UINT_MAX;
