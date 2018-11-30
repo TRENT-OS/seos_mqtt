@@ -24,7 +24,7 @@ int TimerLeftMS(Timer*);
 typedef struct _Network Network;
 
 typedef int (*mqtt_read_func) (Network*, unsigned char*, int, int);
-typedef int (*mqtt_write_func) (Network*, unsigned char*, int, int);
+typedef int (*mqtt_write_func) (Network*, const unsigned char*, int, int);
 
 struct _Network {
     void *ctx;
