@@ -8,11 +8,12 @@
 
 #include <stdint.h>
 
+
 typedef struct {
-    void*           impl;
-    uint64_t        startNS;
-    unsigned        timeSpanMS;
+    uint64_t                    start_ms;
+    uint64_t                    timeSpan_ms;
 } Timer;
+
 
 void TimerInit(Timer*);
 char TimerIsExpired(Timer*);
