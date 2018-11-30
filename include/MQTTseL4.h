@@ -21,8 +21,13 @@ void TimerCountdown(Timer*, unsigned int);
 int TimerLeftMS(Timer*);
 
 
-typedef struct _Network {
+typedef struct _Network Network;
+
+typedef int (*mqtt_read_func) (Network*, unsigned char*, int, int);
+typedef int (*mqtt_write_func) (Network*, unsigned char*, int, int);
+
+struct _Network {
     void *ctx;
-    int (*mqttread) (struct _Network*, unsigned char*, int, int);
-    int (*mqttwrite) (struct _Network*, unsigned char*, int, int);
-} Network;
+    mqtt_read_func mqttread;
+    mqtt_write_func mqttwrite;
+};
