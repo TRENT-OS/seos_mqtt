@@ -20,8 +20,6 @@ add_library(${PROJECT_NAME} STATIC
     ${PAHO_DIR}/MQTTPacket/src/MQTTUnsubscribeClient.c
     ${PAHO_DIR}/MQTTPacket/src/MQTTUnsubscribeServer.c
     #-----------------------------------------------------------
-    ${PAHO_DIR}/MQTTClient-C/src/MQTTClient.c
-    #-----------------------------------------------------------
     src/MQTTseL4_timer.c
 )
 
@@ -29,7 +27,6 @@ target_compile_definitions(${PROJECT_NAME}
   PRIVATE
     MQTT_SERVER
     MQTT_CLIENT
-    MQTTCLIENT_QOS2=1
   PUBLIC
     MQTTCLIENT_PLATFORM_HEADER=MQTTseL4.h
 )
@@ -37,7 +34,6 @@ target_compile_definitions(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
   PUBLIC
     ${PAHO_DIR}/MQTTPacket/src
-    ${PAHO_DIR}/MQTTClient-C/src
     include
   PRIVATE
     src
