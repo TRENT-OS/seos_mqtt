@@ -1,5 +1,5 @@
 /*
- *  SEOS glue layer for PAHO MQTT
+ *  Glue layer for PAHO MQTT
  *
  *  Copyright (C) 2018, Hensoldt Cyber GmbH
  */
