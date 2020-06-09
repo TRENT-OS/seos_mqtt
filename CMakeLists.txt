@@ -2,7 +2,7 @@
 
 cmake_minimum_required(VERSION 3.7.2)
 
-project(seos_mqtt C)
+project(os_mqtt C)
 
 set(CMAKE_BUILD_TYPE Debug)
 
