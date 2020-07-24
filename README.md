@@ -1,4 +1,4 @@
-# seos\_mqtt
+# MQTT Wrapper
 
 Wrapper layer of paho.mqtt.embedded-c that provides the glue code to have MQTT working either with LWIP or with the uart\_socket interface.
 
