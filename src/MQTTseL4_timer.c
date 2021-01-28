@@ -1,7 +1,7 @@
 /*
  *  Glue layer for PAHO MQTT
  *
- *  Copyright (C) 2018, Hensoldt Cyber GmbH
+ *  Copyright (C) 2018-2021, HENSOLDT Cyber GmbH
  */
 
 #include "MQTTseL4.h"

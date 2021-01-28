@@ -1,7 +1,7 @@
 /*
  *  MQTT wrapper
  *
- *  Copyright (C) 2018, Hensoldt Cyber GmbH
+ *  Copyright (C) 2018-2021, HENSOLDT Cyber GmbH
  */
 
 #pragma once
