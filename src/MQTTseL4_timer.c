@@ -17,13 +17,13 @@
 // TimerLeftMS() is used. One day we may get a use case where somebody wants
 // to wait on the timer and we need an implementation that support it better
 // than just polling.
-extern uint64_t get_mqtt_timestamp_ms(void);
+extern uint64_t glue_tls_mqtt_getTimeMs(void);
 
 
 //------------------------------------------------------------------------------
 static uint64_t get_elapsed_ms(Timer* timer)
 {
-    uint64_t timestamp_ms = get_mqtt_timestamp_ms();
+    uint64_t timestamp_ms = glue_tls_mqtt_getTimeMs();
     uint64_t start_ms = timer->start_ms;
 
     // A 64-bit timer counting ms will never roll over in real life, assuming
@@ -57,7 +57,7 @@ static uint64_t get_elapsed_ms(Timer* timer)
 //------------------------------------------------------------------------------
 static void set_countdown_ms(Timer* timer, uint64_t timeout_ms)
 {
-    timer->start_ms     = get_mqtt_timestamp_ms();
+    timer->start_ms     = glue_tls_mqtt_getTimeMs();
     timer->timeSpan_ms  = timeout_ms;
 }
 
