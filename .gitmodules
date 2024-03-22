@@ -1,3 +1,3 @@
 [submodule "paho.mqtt.embedded-c"]
 	path = paho.mqtt.embedded-c
-	url = ../../ext/paho.mqtt.embedded-c.git
+	url = ../paho.mqtt.embedded-c.git
